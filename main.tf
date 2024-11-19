@@ -10,6 +10,6 @@ terraform {
 provider "grafana" {
    alias = "cloud"
 
-   url   = "http://localhost:3000/?orgId=1"
-   auth  = "glsa_a7HpswDeC0dHnZvuSSQbQC8eIlVTMQdL_e2159c9d"
+   url   = "https://hashaha221013.grafana.net/"
+   auth  = "glsa_OYKaWvLSwnLwAmTeRCHj0sFvB4ZmGF4X_0b3ca955"
 }
