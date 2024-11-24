@@ -18,5 +18,5 @@ provider "grafana" {
    alias = "oncall"
 
    oncall_access_token = "f74b0669bd7cdfa1b76e5e50a40717d773e5aa220e82c72aee8fda5bf828"
-   oncall_url = "https://oncall-prod-us-central-0.grafana.net/oncall/api/v1/integrations"
+   oncall_url = "https://oncall-prod-us-central-0.grafana.net/oncall/"
 }
