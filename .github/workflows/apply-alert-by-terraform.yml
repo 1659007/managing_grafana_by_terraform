@@ -10,7 +10,7 @@ on:
       name-uid:
         description: "Folder name"
         required: true
-        default: "My Folder Name"
+        default: "My Alert Name"
 
 jobs:
   terraform:
@@ -59,4 +59,4 @@ jobs:
         id: apply
         continue-on-error: true
         run: |
-          terraform apply -auto-approve
+          terraform apply -var="folder_uid=${{ inputs.foler-uid }}" -var="alert_uid=${{ inputs.alert-uid }}" -auto-approve
