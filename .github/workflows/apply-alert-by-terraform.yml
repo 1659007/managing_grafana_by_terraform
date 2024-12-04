@@ -1,4 +1,4 @@
-name: Terraform
+name: Apply alert by terraform
 
 on:
   workflow_dispatch:
@@ -42,7 +42,7 @@ jobs:
       - name: Plan Terraform
         id: plan
         continue-on-error: true
-        run: terraform apply -var="folder_uid=${{ inputs.foler-uid }}" -var="alert_uid=${{ inputs.alert-uid }}"
+        run: terraform apply -var="folder_uid=${{ inputs.foler-uid }}" -var="alert_uid=${{ inputs.alert-uid }}" -no-color
 
       # Post the preview (terraform plan) from the previous step as a GitHub pull request comment
       - name: Post Plan to GitHub PR
