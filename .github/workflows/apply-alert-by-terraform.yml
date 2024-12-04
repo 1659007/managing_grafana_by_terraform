@@ -12,11 +12,6 @@ on:
         required: true
         default: "My Folder Name"
 
-  push:
-    branches:
-      - 'main'
-  pull_request:
-
 jobs:
   terraform:
     runs-on: ubuntu-latest
@@ -42,7 +37,7 @@ jobs:
       - name: Plan Terraform
         id: plan
         continue-on-error: true
-        run: terraform apply -var="folder_uid=${{ inputs.foler-uid }}" -var="alert_uid=${{ inputs.alert-uid }}" -no-color
+        run: terraform apply -var="folder_uid=${{ inputs.foler-uid }}" -var="alert_uid=${{ inputs.alert-uid }}" -auto-approve
 
       # Post the preview (terraform plan) from the previous step as a GitHub pull request comment
       - name: Post Plan to GitHub PR
