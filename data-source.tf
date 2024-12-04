@@ -1,8 +1,8 @@
 resource "grafana_data_source" "grafanaTestdataDatasource" {
   provider = grafana.cloud
 
-  name = "TestData2"
-  type = "testdata2"
+  name = "TestData3"
+  type = "testdata3"
 }
 
 resource "grafana_folder" "rule_folder" {
