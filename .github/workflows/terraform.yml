@@ -31,7 +31,7 @@ jobs:
       - name: Plan Terraform
         id: plan
         continue-on-error: true
-        run: terraform apply -var="folder_uid=${{ inputs.foler-uid }}" -var="alert_uid=${{ inputs.alert-uid }}" -auto-approve
+        run: terraform plan -var="folder_uid=My folder 1" -var="alert_uid=My alert 1" -auto-approve
 
       # Post the preview (terraform plan) from the previous step as a GitHub pull request comment
       - name: Post Plan to GitHub PR
@@ -53,4 +53,4 @@ jobs:
         id: apply
         continue-on-error: true
         run: |
-          terraform apply -var="folder_uid=${{ inputs.foler-uid }}" -var="alert_uid=${{ inputs.alert-uid }}" -auto-approve
+          terraform apply -var="folder_uid=My folder 1" -var="alert_uid=My alert 1" -auto-approve
