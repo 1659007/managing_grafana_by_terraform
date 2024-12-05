@@ -8,9 +8,13 @@ on:
         required: true
         default: "My Folder Name"
       alert-uid:
-        description: "Folder name"
+        description: "Alert name"
         required: true
         default: "My Alert Name"
+      datasource:
+        description: "Use datasource name"
+        required: true
+        default: "Datasource Name"
 
 jobs:
   terraform:
@@ -37,7 +41,7 @@ jobs:
       - name: Plan Terraform
         id: plan
         continue-on-error: true
-        run: terraform plan -var="folder_uid=${{ inputs.foler-uid }}" -var="alert_uid=${{ inputs.alert-uid }}"
+        run: terraform plan -var="folder_uid=${{ inputs.foler-uid }}" -var="alert_uid=${{ inputs.alert-uid }}" -var="datasource=${{ inputs.datasource }}"
 
       # Post the preview (terraform plan) from the previous step as a GitHub pull request comment
       - name: Post Plan to GitHub PR
@@ -59,4 +63,4 @@ jobs:
         id: apply
         continue-on-error: true
         run: |
-          terraform apply -var="folder_uid=${{ inputs.foler-uid }}" -var="alert_uid=${{ inputs.alert-uid }}" -auto-approve
+          terraform apply -var="folder_uid=${{ inputs.foler-uid }}" -var="alert_uid=${{ inputs.alert-uid }}" -var="datasource=${{ inputs.datasource }}" -auto-approve
