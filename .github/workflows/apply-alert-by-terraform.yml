@@ -7,7 +7,7 @@ on:
         description: "Folder name"
         required: true
         default: "My Folder Name"
-      name-uid:
+      alert-uid:
         description: "Folder name"
         required: true
         default: "My Alert Name"
