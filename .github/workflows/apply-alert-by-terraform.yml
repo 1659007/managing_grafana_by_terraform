@@ -41,8 +41,21 @@ jobs:
       - name: Plan Terraform
         id: plan
         continue-on-error: true
-#        run: terraform plan
         run: terraform plan -var="folder_uid=${{ inputs.folder-uid }}" -var="alert_uid=${{ inputs.alert-uid }}" -var="datasource=${{ inputs.datasource }}"
+
+      # Post the preview (terraform plan) from the previous step as a GitHub pull request comment
+      - name: Post Plan to GitHub PR
+        if: github.ref != 'refs/heads/main'
+        uses: mshick/add-pr-comment@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token-user-login: 'github-actions[bot]'
+          message: |
+            Applying:
+
+            ```
+            ${{ steps.plan.outputs.stdout }}
+            ```
 
       # Applies the terraform configuration files when the branch is `main`
       - name: Apply Terraform
@@ -50,5 +63,4 @@ jobs:
         id: apply
         continue-on-error: true
         run: |
-#          terraform apply -auto-approve
-          terraform apply -var="folder_uid=${{ inputs.folder-uid }}" -var="alert_uid=${{ inputs.alert-uid }}" -var="datasource=${{ inputs.datasource }}" -auto-approve
+          terraform apply -var="folder_uid=${{ inputs.folder_uid }}" -var="alert_uid=${{ inputs.alert-uid }}" -var="datasource=${{ inputs.datasource }}" -auto-approve
