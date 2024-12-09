@@ -63,4 +63,4 @@ jobs:
         id: apply
         continue-on-error: true
         run: |
-          terraform apply -var="folder_uid=${{ inputs.folder_uid }}" -var="alert_uid=${{ inputs.alert-uid }}" -var="datasource=${{ inputs.datasource }}" -auto-approve
+          terraform apply -var="folder_uid=${{ inputs.folder-uid }}" -var="alert_uid=${{ inputs.alert-uid }}" -var="datasource=${{ inputs.datasource }}" -auto-approve
