@@ -45,7 +45,7 @@ jobs:
       - name: Plan Terraform
         id: plan
         continue-on-error: true
-        run: terraform plan -var="folder_uid=${{ inputs.folder-uid }}" -var="alert_uid=${{ inputs.alert-uid }}" -var="datasource=${{ inputs.datasource }}" -var="alert-name=${{ inputs.alert-name }}"
+        run: terraform plan -var="folder_uid=${{ inputs.folder-uid }}" -var="alert_uid=${{ inputs.alert-uid }}" -var="datasource=${{ inputs.datasource }}" -var="alert_name=${{ inputs.alert-name }}"
 
       # Post the preview (terraform plan) from the previous step as a GitHub pull request comment
       - name: Post Plan to GitHub PR
