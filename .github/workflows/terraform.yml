@@ -1,42 +1,42 @@
-#name: Terraform
-#
-#on:
-#  push:
-#    branches:
-#      - 'main'
-#  pull_request:
-#
-#jobs:
-#  terraform:
-#    runs-on: ubuntu-latest
-#
-#    steps:
-#      # Checkout the repository to the GitHub Actions runner
-#      - name: Checkout
-#        uses: actions/checkout@v3
-#
-#      # Install the latest version of Terraform CLI
-#      - name: Setup Terraform
-#        uses: hashicorp/setup-terraform@v1
-#
-#      # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
-#      - name: Terraform Init
-#        run: terraform init
-#
+name: Terraform
+
+on:
+  push:
+    branches:
+      - 'main'
+  pull_request:
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository to the GitHub Actions runner
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # Install the latest version of Terraform CLI
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+
+      # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
+      - name: Terraform Init
+        run: terraform init
+
 #      # Checks that all Terraform configuration files adhere to a canonical format
 #      - name: Terraform Format
 #        run: terraform fmt -check
-#
-#      # Previews the changes that Terraform will make
-#      - name: Plan Terraform
-#        id: plan
-#        continue-on-error: true
-#        run: terraform plan
-#
-#      # Applies the terraform configuration files when the branch is `main`
-#      - name: Apply Terraform
-#        if: github.ref == 'refs/heads/main'
-#        id: apply
-#        continue-on-error: true
-#        run: |
-#          terraform apply -auto-approve
+
+      # Previews the changes that Terraform will make
+      - name: Plan Terraform
+        id: plan
+        continue-on-error: true
+        run: terraform plan
+
+      # Applies the terraform configuration files when the branch is `main`
+      - name: Apply Terraform
+        if: github.ref == 'refs/heads/main'
+        id: apply
+        continue-on-error: true
+        run: |
+          terraform apply -auto-approve
